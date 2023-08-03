@@ -20,3 +20,19 @@ enum NewsCategory: CaseIterable {
         return String(describing: self).capitalized
     }
 }
+
+struct NewsEntity: Codable {
+    let status: String?
+    let totalResults: Int?
+    let articles: [ArticleEntity]?
+}
+
+struct ArticleEntity: Codable {
+    let source: Source?
+    let author, title, description, url, urlToImage, publishedAt, content: String?
+}
+
+struct Source: Codable {
+    let id: String?
+    let name: String?
+}

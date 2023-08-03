@@ -21,7 +21,7 @@ class HomeScreenView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setup()
     }
     
     func setup() {
@@ -38,5 +38,28 @@ class HomeScreenView: UIViewController {
                 }.disposed(by: bag)
         newsCategoryCollection.rx.setDelegate(self).disposed(by: bag)
     }
+    
+    func setupAction() {
+        presenter.onSuccessFetchData
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
+                self.homeView.isHidden = !value
+                self.errorView.isHidden = value
+            }).disposed(by: bag)
+    }
 
+}
+
+extension HomeScreenView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = 30 + (flowLayout.minimumInteritemSpacing * CGFloat(1))
+        var size = Int((collectionView.bounds.width - totalSpace) / CGFloat(2))
+        size = size <= 0 ? 0 : size
+        return CGSize(width: size, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    }
 }

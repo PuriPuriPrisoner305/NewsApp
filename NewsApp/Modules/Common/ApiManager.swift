@@ -15,8 +15,13 @@ class ApiManager {
                 observer.onError(NSError(domain: ErrorType.invalidURL.description, code: 0))
                 return Disposables.create()
             }
-            let session = URLSession.shared
-            let task = session.dataTask(with: url) { data, response, error in
+            
+            // Set Header Values
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("X-Api-Key", forHTTPHeaderField: APIEndpoint.APIKey.url)
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     observer.onError(error)
                     return
@@ -42,13 +47,17 @@ class ApiManager {
 }
 
 extension ApiManager {
+// MARK: List of endpoint
     enum APIEndpoint {
-        case category
+        case APIKey
+        case topHeadlines(category: String, page: Int)
         
         var url: String {
             switch self {
-            case .category:
-                return ""
+            case .APIKey:
+                return "f0a82022c6474f9c912e9ab4a04d55d1"
+            case .topHeadlines(let category, let page):
+                return "https://newsapi.org/v2/top-headlines?category=\(category)&page=\(page)"
             }
         }
     }
