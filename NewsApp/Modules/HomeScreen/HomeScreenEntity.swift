@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NewsCategory: CaseIterable {
+enum NewsCategory: String, CaseIterable {
     case business
     case entertainment
     case general
@@ -22,7 +22,7 @@ enum NewsCategory: CaseIterable {
 }
 
 struct NewsEntity: Codable {
-    let status: String?
+    let status, code, message: String?
     let totalResults: Int?
     let articles: [ArticleEntity]?
 }

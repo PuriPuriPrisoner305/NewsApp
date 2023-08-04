@@ -19,8 +19,8 @@ class ApiManager {
             // Set Header Values
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
-            request.setValue("X-Api-Key", forHTTPHeaderField: APIEndpoint.APIKey.url)
-            
+            request.setValue(APIEndpoint.APIKey.url, forHTTPHeaderField: "X-Api-Key")
+            print(request.allHTTPHeaderFields)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     observer.onError(error)
@@ -57,7 +57,7 @@ extension ApiManager {
             case .APIKey:
                 return "f0a82022c6474f9c912e9ab4a04d55d1"
             case .topHeadlines(let category, let page):
-                return "https://newsapi.org/v2/top-headlines?category=\(category)&page=\(page)"
+                return "https://newsapi.org/v2/top-headlines?category=\(category)&country=us&page=\(page)"
             }
         }
     }

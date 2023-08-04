@@ -13,12 +13,12 @@ class HomeScreenView: UIViewController {
 
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var errorView: UIView!
-    
     @IBOutlet weak var newsCategoryCollection: UICollectionView!
+    
+    var category: NewsCategory = .general
     
     var presenter = HomeScreenPresenter()
     var bag = DisposeBag()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -34,20 +34,12 @@ class HomeScreenView: UIViewController {
             to: newsCategoryCollection.rx.items(
                 cellIdentifier: CategoryCell.identifier,
                 cellType: CategoryCell.self)) { (index, item, cell) in
-                    cell.categoryLabel.text = item.name
+                    cell.category = item
+                    cell.delegate = self
                 }.disposed(by: bag)
         newsCategoryCollection.rx.setDelegate(self).disposed(by: bag)
     }
     
-    func setupAction() {
-        presenter.onSuccessFetchData
-            .subscribe(onNext: { [weak self] value in
-                guard let self = self else { return }
-                self.homeView.isHidden = !value
-                self.errorView.isHidden = value
-            }).disposed(by: bag)
-    }
-
 }
 
 extension HomeScreenView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -61,5 +53,12 @@ extension HomeScreenView: UICollectionViewDelegate, UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    }
+}
+
+extension HomeScreenView: CategoryCellDelegate {
+    func didTap(category: NewsCategory) {
+        guard let navigation = navigationController else { return }
+        presenter.navigateToHeadlines(navigation: navigation, category: category)
     }
 }

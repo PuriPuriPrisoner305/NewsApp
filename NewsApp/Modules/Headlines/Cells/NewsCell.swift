@@ -14,9 +14,14 @@ class NewsCell: UICollectionViewCell {
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsTimeLabel: UILabel!
     
+    static let identifier = String(describing: NewsCell.self)
+    static let nib = {
+        return UINib(nibName: identifier, bundle: nil)
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setup()
     }
     
     func setup() {
@@ -25,6 +30,13 @@ class NewsCell: UICollectionViewCell {
     
     func configure(_ imageView: UIImageView) {
         imageView.layer.cornerRadius = 15
+    }
+    
+    func setupCell(data: ArticleEntity) {
+        newsTitleLabel.text = data.title ?? "-"
+        newsSourceLabel.text = data.source?.name ?? "-"
+        newsTimeLabel.text = data.publishedAt ?? "-"
+        print("setup")
     }
 
 }

@@ -14,6 +14,7 @@ enum ErrorType {
     case storyboardLoadFailed
     case invalidURL
     case emptyFetchedData
+    case failLoadView
     
     var description: String {
         switch self {
@@ -29,6 +30,8 @@ enum ErrorType {
             return "Invalid URL"
         case .emptyFetchedData:
             return "No data returned from API"
+        case .failLoadView:
+            return "Failed to load view"
         }
     }
 }
