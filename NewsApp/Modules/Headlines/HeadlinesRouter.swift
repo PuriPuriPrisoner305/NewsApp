@@ -16,6 +16,7 @@ class HeadlinesRouter {
         else {
             fatalError(ErrorType.failLoadView.description)
         }
+        view.category = category
         return view
     }
     

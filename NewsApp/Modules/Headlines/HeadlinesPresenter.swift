@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxRelay
 
 class HeadlinesPresenter: BasePresenter {
-    var newsData = BehaviorSubject(value: [ArticleEntity]())
+    var newsData = BehaviorRelay<[ArticleEntity]>(value: [])
     var onSuccessFetchData = PublishSubject<Bool>()
     
     var currentPage = 1
@@ -26,7 +27,7 @@ class HeadlinesPresenter: BasePresenter {
                     self?.onSuccessFetchData.onNext(false)
                     return
                 }
-                newsData.onNext(articles)
+                newsData.accept(self.newsData.value + articles)
                 onSuccessFetchData.onNext(true)
                 currentPage += 1
             }, onError: { error in

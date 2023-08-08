@@ -7,9 +7,10 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 class NewsCell: UICollectionViewCell {
-    @IBOutlet weak var imageVIew: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var newsSourceLabel: UILabel!
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsTimeLabel: UILabel!
@@ -25,7 +26,8 @@ class NewsCell: UICollectionViewCell {
     }
     
     func setup() {
-        configure(imageVIew)
+        configure(imageView)
+        newsTitleLabel.skeletonTextNumberOfLines = 3
     }
     
     func configure(_ imageView: UIImageView) {
@@ -33,10 +35,14 @@ class NewsCell: UICollectionViewCell {
     }
     
     func setupCell(data: ArticleEntity) {
+        setupImage(url: data.urlToImage ?? "-")
         newsTitleLabel.text = data.title ?? "-"
         newsSourceLabel.text = data.source?.name ?? "-"
         newsTimeLabel.text = data.publishedAt ?? "-"
-        print("setup")
     }
 
+    func setupImage(url: String) {
+        let url = URL(string: url)
+        imageView.kf.setImage(with: url)
+    }
 }
