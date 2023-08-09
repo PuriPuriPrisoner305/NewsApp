@@ -38,11 +38,30 @@ class NewsCell: UICollectionViewCell {
         setupImage(url: data.urlToImage ?? "-")
         newsTitleLabel.text = data.title ?? "-"
         newsSourceLabel.text = data.source?.name ?? "-"
-        newsTimeLabel.text = data.publishedAt ?? "-"
+        newsTimeLabel.text = calculateDate(date: data.publishedAt ?? "")
     }
 
     func setupImage(url: String) {
         let url = URL(string: url)
         imageView.kf.setImage(with: url)
+    }
+    
+    func calculateDate(date: String) -> String  {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let dateFormatted = dateFormatter.date(from: date) {
+            let calendar = Calendar.current
+            let dateComponents = calendar.dateComponents([.hour], from: dateFormatted, to: Date())
+            
+            if let hour = dateComponents.hour {
+                if hour < 24 {
+                    return "\(hour)h"
+                } else {
+                    let day = floor((Double(hour) / 24))
+                    return "\(Int(day))d"
+                }
+            }
+        }
+        return "-"
     }
 }

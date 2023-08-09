@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -81,17 +82,27 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qB-gN-Hna" userLabel="Separator">
+                        <rect key="frame" x="5" y="258" width="223" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="NT1-YA-5Vb"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Gds-Up-oBC" secondAttribute="trailing" id="5vT-pH-1WD"/>
+                <constraint firstAttribute="trailing" secondItem="8qB-gN-Hna" secondAttribute="trailing" constant="5" id="6el-M1-p7j"/>
+                <constraint firstItem="8qB-gN-Hna" firstAttribute="top" secondItem="Na2-ce-QYv" secondAttribute="bottom" constant="11" id="8Lj-tL-SOs"/>
+                <constraint firstAttribute="bottom" secondItem="8qB-gN-Hna" secondAttribute="bottom" id="CL5-ZD-TZ6"/>
                 <constraint firstItem="Na2-ce-QYv" firstAttribute="top" secondItem="4MB-Cb-aKI" secondAttribute="bottom" constant="18" id="DtE-Dj-cuY"/>
-                <constraint firstAttribute="bottom" secondItem="Na2-ce-QYv" secondAttribute="bottom" constant="12" id="FaA-1n-Rn5"/>
                 <constraint firstItem="zv3-6q-Rl1" firstAttribute="leading" secondItem="Gds-Up-oBC" secondAttribute="leading" id="HAj-jf-1bf"/>
                 <constraint firstItem="4MB-Cb-aKI" firstAttribute="top" secondItem="zv3-6q-Rl1" secondAttribute="bottom" constant="10" id="Um9-tD-lfx"/>
                 <constraint firstItem="Gds-Up-oBC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V83-lY-dEX"/>
                 <constraint firstItem="zv3-6q-Rl1" firstAttribute="top" secondItem="Gds-Up-oBC" secondAttribute="bottom" constant="5" id="XnJ-tq-UNW"/>
                 <constraint firstAttribute="trailing" secondItem="4MB-Cb-aKI" secondAttribute="trailing" id="asG-sn-2qu"/>
+                <constraint firstItem="8qB-gN-Hna" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="dqH-b3-xAc"/>
                 <constraint firstItem="Gds-Up-oBC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eJ1-Ns-fu0"/>
                 <constraint firstItem="4MB-Cb-aKI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sYP-Z5-6J9"/>
                 <constraint firstItem="Na2-ce-QYv" firstAttribute="leading" secondItem="4MB-Cb-aKI" secondAttribute="leading" id="sYt-MS-6yy"/>
@@ -109,4 +120,9 @@
             <point key="canvasLocation" x="278.62595419847327" y="92.605633802816911"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
