@@ -90,6 +90,7 @@ extension HeadlinesView: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.identifier, for: indexPath) as? NewsCell else { return UICollectionViewCell() }
         cell.setupCell(data: presenter.newsData.value[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -104,6 +105,12 @@ extension HeadlinesView: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.newsData.value.count
     }
-    
-    
+
+}
+
+extension HeadlinesView: NewsCellDelegate {
+    func didTap(url: String) {
+        guard let navigation = navigationController else { return }
+        presenter.navigateToNewsWeb(navigation: navigation, url: url)
+    }
 }

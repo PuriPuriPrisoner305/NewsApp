@@ -43,9 +43,15 @@ class CategoryCell: UICollectionViewCell {
     private func setupCell() {
         self.layer.cornerRadius = 10.0
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
         self.backgroundColor = UIColor.clear
+        
+        let currentInterfaceStyle = self.traitCollection.userInterfaceStyle
+        if currentInterfaceStyle == .dark {
+            self.layer.borderColor = UIColor.white.cgColor
+        } else {
+            self.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     func setupAction() {

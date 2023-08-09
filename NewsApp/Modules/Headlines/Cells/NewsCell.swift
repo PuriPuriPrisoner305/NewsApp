@@ -8,12 +8,21 @@
 import UIKit
 import SkeletonView
 import Kingfisher
+import RxSwift
+
+protocol NewsCellDelegate {
+    func didTap(url: String)
+}
 
 class NewsCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var newsSourceLabel: UILabel!
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsTimeLabel: UILabel!
+    
+    var delegate: NewsCellDelegate?
+    var url: String = ""
+    var bag = DisposeBag()
     
     static let identifier = String(describing: NewsCell.self)
     static let nib = {
@@ -26,8 +35,18 @@ class NewsCell: UICollectionViewCell {
     }
     
     func setup() {
+        setupAction()
         configure(imageView)
         newsTitleLabel.skeletonTextNumberOfLines = 3
+    }
+    
+    func setupAction() {
+        self.contentView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didTap(url: self.url)
+            }).disposed(by: bag)
     }
     
     func configure(_ imageView: UIImageView) {
@@ -39,6 +58,7 @@ class NewsCell: UICollectionViewCell {
         newsTitleLabel.text = data.title ?? "-"
         newsSourceLabel.text = data.source?.name ?? "-"
         newsTimeLabel.text = calculateDate(date: data.publishedAt ?? "")
+        url = data.url ?? ""
     }
 
     func setupImage(url: String) {

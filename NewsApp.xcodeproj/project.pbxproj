@@ -13,6 +13,9 @@
 		22112AB42A7CF08800D08212 /* HeadlinesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22112AB32A7CF08800D08212 /* HeadlinesInteractor.swift */; };
 		22112AB92A7CF64A00D08212 /* HeadlinesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22112AB82A7CF64A00D08212 /* HeadlinesRouter.swift */; };
 		22112ABB2A7CF8A700D08212 /* HomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22112ABA2A7CF8A700D08212 /* HomeScreenRouter.swift */; };
+		2217C2E22A83480500FC5339 /* NewsWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2217C2E12A83480500FC5339 /* NewsWebView.storyboard */; };
+		2217C2E42A83481900FC5339 /* NewsWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2217C2E32A83481900FC5339 /* NewsWebView.swift */; };
+		2217C2E82A83497300FC5339 /* NewsWebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2217C2E72A83497300FC5339 /* NewsWebRouter.swift */; };
 		2224C2662A77B75F00FF0CDC /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224C2652A77B75F00FF0CDC /* ApiManager.swift */; };
 		2224C2682A77B8E200FF0CDC /* CommonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224C2672A77B8E200FF0CDC /* CommonEntity.swift */; };
 		2224C26A2A77BFFD00FF0CDC /* HomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224C2692A77BFFD00FF0CDC /* HomeScreenPresenter.swift */; };
@@ -43,6 +46,9 @@
 		22112AB32A7CF08800D08212 /* HeadlinesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesInteractor.swift; sourceTree = "<group>"; };
 		22112AB82A7CF64A00D08212 /* HeadlinesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesRouter.swift; sourceTree = "<group>"; };
 		22112ABA2A7CF8A700D08212 /* HomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRouter.swift; sourceTree = "<group>"; };
+		2217C2E12A83480500FC5339 /* NewsWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsWebView.storyboard; sourceTree = "<group>"; };
+		2217C2E32A83481900FC5339 /* NewsWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebView.swift; sourceTree = "<group>"; };
+		2217C2E72A83497300FC5339 /* NewsWebRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebRouter.swift; sourceTree = "<group>"; };
 		2224C2652A77B75F00FF0CDC /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		2224C2672A77B8E200FF0CDC /* CommonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEntity.swift; sourceTree = "<group>"; };
 		2224C2692A77BFFD00FF0CDC /* HomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenPresenter.swift; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 			path = Ext;
 			sourceTree = "<group>";
 		};
+		2217C2E02A8347CC00FC5339 /* NewsWeb */ = {
+			isa = PBXGroup;
+			children = (
+				2217C2E12A83480500FC5339 /* NewsWebView.storyboard */,
+				2217C2E32A83481900FC5339 /* NewsWebView.swift */,
+				2217C2E72A83497300FC5339 /* NewsWebRouter.swift */,
+			);
+			path = NewsWeb;
+			sourceTree = "<group>";
+		};
 		2224C2642A77B75300FF0CDC /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +182,7 @@
 		2251819E2A77AE1800D7B94C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2217C2E02A8347CC00FC5339 /* NewsWeb */,
 				2224C2642A77B75300FF0CDC /* Common */,
 				2251819F2A77AE2200D7B94C /* HomeScreen */,
 				22112AAB2A7CE9B000D08212 /* Headlines */,
@@ -267,6 +284,7 @@
 				2264CB032A7BB4E40076F39A /* NewsCell.xib in Resources */,
 				2224C2712A77CBA200FF0CDC /* CategoryCell.xib in Resources */,
 				225181A12A77AE3000D7B94C /* HomeScreenView.storyboard in Resources */,
+				2217C2E22A83480500FC5339 /* NewsWebView.storyboard in Resources */,
 				22112AAD2A7CEACB00D08212 /* HeadlinesView.storyboard in Resources */,
 				225181972A77ADAA00D7B94C /* LaunchScreen.storyboard in Resources */,
 				225181942A77ADAA00D7B94C /* Assets.xcassets in Resources */,
@@ -326,6 +344,7 @@
 				22112AAF2A7CEB1300D08212 /* HeadlinesView.swift in Sources */,
 				2251818F2A77ADA800D7B94C /* ViewController.swift in Sources */,
 				2224C2682A77B8E200FF0CDC /* CommonEntity.swift in Sources */,
+				2217C2E42A83481900FC5339 /* NewsWebView.swift in Sources */,
 				22112AB92A7CF64A00D08212 /* HeadlinesRouter.swift in Sources */,
 				2251818B2A77ADA800D7B94C /* AppDelegate.swift in Sources */,
 				2264CB052A7BB9820076F39A /* HomeScreenInteractor.swift in Sources */,
@@ -336,6 +355,7 @@
 				2224C2662A77B75F00FF0CDC /* ApiManager.swift in Sources */,
 				2264CB092A7BBDB60076F39A /* BasePresenter.swift in Sources */,
 				2224C2702A77CBA200FF0CDC /* CategoryCell.swift in Sources */,
+				2217C2E82A83497300FC5339 /* NewsWebRouter.swift in Sources */,
 				22112AB42A7CF08800D08212 /* HeadlinesInteractor.swift in Sources */,
 				2251818D2A77ADA800D7B94C /* SceneDelegate.swift in Sources */,
 				22112ABB2A7CF8A700D08212 /* HomeScreenRouter.swift in Sources */,

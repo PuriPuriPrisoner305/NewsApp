@@ -17,6 +17,7 @@ class HeadlinesPresenter: BasePresenter {
     var currentPage = 1
     
     var interactor = HeadlinesInteractor()
+    var router = HeadlinesRouter()
     
     func fetchNews(category: String) {
         interactor.fetchNews(category: category, page: currentPage)
@@ -34,6 +35,10 @@ class HeadlinesPresenter: BasePresenter {
                 self.onSuccessFetchData.onNext(false)
                 print(error)
             }).disposed(by: bag)
+    }
+    
+    func navigateToNewsWeb(navigation: UINavigationController, url: String) {
+        router.navigateToNewsWeb(navigation: navigation , url: url)
     }
     
 }

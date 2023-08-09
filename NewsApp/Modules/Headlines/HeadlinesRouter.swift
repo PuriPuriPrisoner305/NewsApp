@@ -20,5 +20,10 @@ class HeadlinesRouter {
         return view
     }
     
+    func navigateToNewsWeb(navigation: UINavigationController, url: String) {
+        let view = NewsWebRouter().showView(url: url)
+        navigation.pushViewController(view, animated: true)
+    }
+    
 }
 
